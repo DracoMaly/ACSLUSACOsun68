@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class _2019jrc2 {
+public class _1920jrc2 {
 	
 	static Scanner in;
 	
