@@ -8,14 +8,24 @@ public class _2021jrc1 {
 	
 	static int output;
 	
+	/*
+	 599 23 43
+	 4326 1234 80
+	 704 1776 200
+	 6283 185 31
+	 3141 59 26
+	 */
+	
 	public static void main(String[] args) {
-		init();
-		solve();
-		output();
+		in = new Scanner(System.in);
+		for(int i = 0; i < 5; i++) {
+			init();
+			solve();
+			output();
+		}
 	}
 	
 	public static void init() {
-		in = new Scanner(System.in);
 		
 		s = in.nextInt();
 		d = in.nextInt();

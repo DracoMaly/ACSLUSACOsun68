@@ -3,21 +3,21 @@ import java.util.*;
 public class _1920jrc1 {
 	static Scanner in;
 	
-	//try not to touch NPD for better debugging
 	static char[] N;
 	static int P, D;
 	
 	static char[] output;
 	
 	public static void main(String[] args) {
-		init();
-		solve();
-		output();
+		in = new Scanner(System.in);
+		for(int i = 0; i < 5; i++) {
+			init();
+			solve();
+			output();
+		}
 	}
 	
-	public static void init() {
-		in = new Scanner(System.in);
-		
+	public static void init() {	
 		N = in.next().toCharArray();
 		P = in.nextInt();
 		D = in.nextInt();
