@@ -13,14 +13,15 @@ public class _1819jrc2 {
 	static String largestWord;
 	
 	public static void main(String[] args) {
-		init();
-		solve();
-		output();
+		in = new Scanner(System.in); 
+		for(int i = 0; i < 5; i++) {
+			init();
+			solve();
+			output();
+		}
 	}
 	
 	public static void init() {
-		
-		in = new Scanner(System.in); 
 		
 		sentence = in.nextLine();
 	}
