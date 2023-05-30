@@ -4,8 +4,8 @@ public class _2021jrc4 {
 	
 	static Scanner in;
 	
-	static int query;
-	static int[][] adj;
+	static int[][] matrix;
+	static int chara;
 	
 	static String output;
 	public static void main(String[] args) {
@@ -19,51 +19,79 @@ public class _2021jrc4 {
 	}
 	
 	public static void init() {
-		adj = new int[9][9];
 		
-		query = in.nextInt();
+		String line = in.nextLine();
 		
-		StringTokenizer st = new StringTokenizer(in.nextLine());
-		while(st.hasMoreTokens()) {
-			String t = st.nextToken();
-			int origin = t.charAt(0) - '0' - 1;
-			int dest = t.charAt(1) - '0' -1;
-			
-			adj[origin][dest] = 1;
+		matrix = new int[10][10];
+		
+		StringTokenizer bobFrankST = new StringTokenizer(line);
+		
+		chara = Integer.parseInt(bobFrankST.nextToken());
+		
+		while(bobFrankST.hasMoreTokens()) {
+			String thing = bobFrankST.nextToken();
+			int row = thing.charAt(0)-'0';
+			int col = thing.charAt(1)-'0';
+			matrix[row][col] = 1;
 		}
 		
 		output = "";
 	}
 	
 	public static void solve() {
-		if(query == 1) {
-			int count = 0;
-			for(int i = 0; i < adj.length; i++) {
-				for(int j = 0; j < adj.length; j++) {
-					if(adj[i][j] == 1) {
+		int count = 0;
+		
+		if(chara == 1) {
+			for(int i = 0; i < 10; i++) {
+				if(matrix[i][i] == 1) {
+					count++;
+				}
+			}
+			for(int i = 0; i < 10; i++) {
+				for(int j = i+1; j < 10; j++) {
+					if(matrix[i][j] == 1 && matrix[j][i] == 1) {
 						count++;
 					}
 				}
 			}
-		}else if(query == 2) {
+		}else if(chara == 2) {
+			int max = 0;
+			int maxI = 0;
+			for(int i = 0; i < 10; i++) {
+				int c = 0;
+				for(int j = 0; j < 10; j++) {
+					if(matrix[i][j] == 1) {
+						c++;
+					}
+				}
+				if(c > max) {
+					max = c;
+					maxI = i;
+				}
+			}
+			
+			for(int j = 0; j < 10; j++) {
+				if(matrix[maxI][j] == 1) {
+					count += maxI*10+j;
+				}
+			}
 			
 		}else {
-			int count = 0;
-			for(int i = 0; i < adj.length; i++) {
-				for(int j = 0; j <adj[i].length; j++) {
-					if(adj[i][j] == 1) {
-						for(int k = 0; k < adj[j].length;k++) {
-							if(adj[j][k] == 1) count++;
+			for(int i = 0; i < 10; i++) {
+				for(int j = 0; j < 10; j++) {
+					for(int k = 0; k < 10; k++) {
+						if(matrix[i][j] == 1 && matrix[j][k] == 1) {
+							count++;
 						}
 					}
 				}
 			}
-			output = "" + count;
 		}
+		output = ""+count;
 	}
 	
 	public static void output() {
-		
+		System.out.println(output);
 	}
 }
 
